@@ -103,7 +103,7 @@ class DataGatherer(Thread):
                 for t in prodstack['tenants']:
                     tid = t['id']
                     prodstack['volume_quotas'][tid] = cinder.quotas.get(tid, usage=True)._info
-                    prodstack['nova_quotas'][tid] = nova.quotas.get(tid, detail=True)._info
+                    #prodstack['nova_quotas'][tid] = nova.quotas.get(tid, detail=True)._info
             except:
                 # Ignore failures, we will try again after refresh_interval.
                 # Most of them are termporary ie. connectivity problmes
@@ -400,7 +400,7 @@ class Nova():
         self.gen_hypervisor_stats()
         self.gen_instance_stats()
         self.gen_overcommit_stats()
-        self.gen_quota_stats()
+        #self.gen_quota_stats()
         return generate_latest(self.registry)
 
 
